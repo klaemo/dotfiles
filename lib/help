@@ -10,7 +10,7 @@ Usage: $(basename "$0") [options]
 Options:
     -h, --help      Print this help text
     -l, --list      Print a list of additional software from AppStore
-    -d, --downloads Open download pages of additional software in your browser
+    -d, --download 	Download additional non-AppStore software
     --no-packages   Suppress package updates
     --no-sync       Suppress pulling from the remote repository
 

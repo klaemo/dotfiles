@@ -42,8 +42,8 @@ Options:
         <td>List of additional applications from the AppStore</td>
     </tr>
     <tr>
-        <td><code>-d</code>, <code>--downloads</code></td>
-        <td>Opens download pages of additional software in your browser</td>
+        <td><code>-d</code>, <code>--download</code></td>
+        <td>Download additional non-AppStore software</td>
     </tr>
     <tr>
         <td><code>--no-packages</code></td>

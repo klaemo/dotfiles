@@ -22,7 +22,7 @@ cd ${DOTFILES_DIRECTORY}
 
 source ./lib/help
 source ./lib/additional
-source ./lib/download_sites
+source ./lib/download
 source ./lib/utils
 source ./lib/brew
 source ./lib/node
@@ -41,7 +41,7 @@ fi
 
 # List additional software to install
 if [[ "$1" == "-d" || "$1" == "--downloads" ]]; then
-    run_download_sites
+    run_download
     exit
 fi
 
@@ -112,7 +112,7 @@ else
     # Show list of additional AppStore Software
     run_additional
 
-    printf "\nRun 'dotfiles -d' to open the download pages of additional software in your browser.\n"
+    printf "\nRun 'dotfiles -d' to download additional non-AppStore software.\n"
 fi
 
 link() {
