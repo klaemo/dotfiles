@@ -133,7 +133,7 @@ Screenshot:
 
 ![](http://i.imgur.com/DSJ1G.png)
 
-### Local/private Bash and Vim configuration
+### Local/private Bash configuration
 
 Any private and custom Bash commands and configuration should be placed in a
 `~/.extra` file. This file will not be under version control or
