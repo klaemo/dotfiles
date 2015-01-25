@@ -109,12 +109,12 @@ else
     # Install Homebrew formulae
     run_brew
     # Install Node packages
-    run_npm
+    run_node
 
     # Show list of additional AppStore Software
     run_additional
 
-    printf "Run 'dotfiles -d' to open the download pages of additional\n software in your browser."
+    printf "\nRun 'dotfiles -d' to open the download pages of additional software in your browser.\n"
 fi
 
 link() {
