@@ -1,0 +1,40 @@
+#!/bin/bash
+
+run_download_sites() {
+# Chrome
+open https://www.google.com/intl/de/chrome/browser/desktop/index.html
+sleep 1
+
+# BitTorrent Sync
+open http://www.getsync.com/intl/de/download
+sleep 1
+
+# Dropbox
+#open https://www.dropbox.com/downloading
+sleep 1
+
+# Sublime Text 3
+open http://www.sublimetext.com/3
+sleep 1
+
+# XCA
+open http://sourceforge.net/projects/xca
+sleep 1
+
+# VLC
+open https://www.videolan.org/vlc
+sleep 1
+
+# ImageOptim
+open https://imageoptim.com
+sleep 1
+
+# VirtualBox
+open https://www.virtualbox.org/wiki/Downloads
+sleep 1
+
+# Adobe SourceCodePro
+open https://github.com/adobe-fonts/source-code-pro/releases/latest
+sleep 1
+
+}

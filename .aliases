@@ -1,8 +1,3 @@
-# docker shortcuts
-alias b2d="boot2docker"
-alias d="docker"
-alias dri="docker run --rm -i -t"
-
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
@@ -18,6 +13,11 @@ alias p="cd ~/projects"
 alias g="git"
 alias h="history"
 alias j="jobs"
+
+# docker shortcuts
+alias b2d="boot2docker"
+alias d="docker"
+alias dri="docker run --rm -i -t"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

@@ -1,108 +1,179 @@
-# Mathias’s dotfiles
+# Clemens' Dotfiles
 
-![Screenshot of my shell prompt](http://i.imgur.com/EkEtphC.png)
+My OS X dotfiles. Heavily inspired by [@necolas](https://github.com/necolas) (Nicolas Gallagher).
 
-## Installation
 
-### Using Git and the bootstrap script
+## How to install
 
-You can clone the repository wherever you want. (I like to keep it in `~/Projects/dotfiles`, with `~/dotfiles` as a symlink.) The bootstrapper script will pull in the latest version and copy the files to your home folder.
+The installation step may overwrite existing dotfiles in your HOME directory.
 
 ```bash
-git clone https://github.com/mathiasbynens/dotfiles.git && cd dotfiles && source bootstrap.sh
+$ bash -c "$(curl -fsSL raw.github.com/klaemo/dotfiles/master/bin/dotfiles)"
 ```
 
-To update, `cd` into your local `dotfiles` repository and then:
+N.B. If you wish to fork this project and maintain your own dotfiles, you must
+substitute my username for your own in the above command and the 2 variables
+found at the top of the `bin/dotfiles` script.
+
+## How to update
+
+You should run the update when:
+
+* You make a change to `~/.dotfiles/git/gitconfig` (the only file that is
+  copied rather than symlinked).
+* You want to pull changes from the remote repository.
+* You want to update Homebrew formulae and Node packages.
+
+Run the dotfiles command:
 
 ```bash
-source bootstrap.sh
+$ dotfiles
 ```
 
-Alternatively, to update while avoiding the confirmation prompt:
+Options:
+
+<table>
+    <tr>
+        <td><code>-h</code>, <code>--help</code></td>
+        <td>Help</td>
+    </tr>
+    <tr>
+        <td><code>-l</code>, <code>--list</code></td>
+        <td>List of additional applications from the AppStore</td>
+    </tr>
+    <tr>
+        <td><code>-d</code>, <code>--downloads</code></td>
+        <td>Opens download pages of additional software in your browser</td>
+    </tr>
+    <tr>
+        <td><code>--no-packages</code></td>
+        <td>Suppress package updates</td>
+    </tr>
+    <tr>
+        <td><code>--no-sync</code></td>
+        <td>Suppress pulling from the remote repository</td>
+    </tr>
+</table>
+
+
+## Features
+
+### Automatic software installation
+
+Homebrew formulae:
+
+* GNU core utilities
+* [git](http://git-scm.com/)
+* [ack](http://betterthangrep.com/)
+* bash (latest version)
+* [bash-completion](http://bash-completion.alioth.debian.org/)
+* [ffmpeg](http://ffmpeg.org/)
+* [graphicsmagick](http://www.graphicsmagick.org/)
+* [node](http://nodejs.org/)
+* [rsync](https://rsync.samba.org/) (latest version, rather than the out-dated OS X installation)
+* [tree](http://mama.indstate.edu/users/ice/tree/)
+* [wget](http://www.gnu.org/software/wget/)
+* [boot2docker](http://boot2docker.io)
+* [ansible](http://ansible.com)
+
+Also newer versions of `grep`, `screen` and `openssh`.
+
+Node packages:
+
+* [nave](https://github.com/isaacs/nave)
+* [jscs](https://github.com/jscs-dev/node-jscs)
+* [jshint](http://www.jshint.com/)
+* [couchsurfer](https://github.com/klaemo/couchsurfer)
+
+It also installs `iojs` with nave, but sets "stable" `node 0.10.35` as the default `node`.
+
+### Custom OS X defaults
+
+Custom OS X settings can be applied during the `dotfiles` process. They can
+also be applied independently by running the following command:
 
 ```bash
-set -- -f; source bootstrap.sh
+$ osxdefaults
 ```
 
-### Git-free install
+This also installs custom Sublime Text settings.
 
-To install these dotfiles without Git:
+### Custom bash prompt
+
+I use a custom bash prompt based on the [hukl's smyck color palette](https://github.com/hukl/Smyck-Color-Scheme) and influenced
+by @gf3's and @mathias's custom prompts. It will be installed during the dotfiles setup process.
+
+When your current working directory is a Git repository, the prompt will
+display the checked-out branch's name (and failing that, the commit SHA that
+HEAD is pointing to). The state of the working tree is reflected in the
+following way:
+
+<table>
+    <tr>
+        <td><code>+</code></td>
+        <td>Uncommitted changes in the index</td>
+    </tr>
+    <tr>
+        <td><code>!</code></td>
+        <td>Unstaged changes</td>
+    </tr>
+    <tr>
+        <td><code>?</code></td>
+        <td>Untracked files</td>
+    </tr>
+    <tr>
+        <td><code>$</code></td>
+        <td>Stashed files</td>
+    </tr>
+</table>
+
+Further details are in the `bash_prompt` file.
+
+Screenshot:
+
+![](http://i.imgur.com/DSJ1G.png)
+
+### Local/private Bash and Vim configuration
+
+Any private and custom Bash commands and configuration should be placed in a
+`~/.extra` file. This file will not be under version control or
+committed to a public repository. If `~/.extra` exists, it will be
+sourced for inclusion in `bash_profile`.
+
+Here is an example `~/.extra`:
 
 ```bash
-cd; curl -#L https://github.com/mathiasbynens/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,bootstrap.sh,LICENSE-MIT.txt}
-```
+# PATH exports
+PATH=$PATH:~/.gem/ruby/1.8/bin
+export PATH
 
-To update later on, just run that command again.
-
-### Specify the `$PATH`
-
-If `~/.path` exists, it will be sourced along with the other files, before any feature testing (such as [detecting which version of `ls` is being used](https://github.com/mathiasbynens/dotfiles/blob/aff769fd75225d8f2e481185a71d5e05b76002dc/.aliases#L21-26)) takes place.
-
-Here’s an example `~/.path` file that adds `~/utils` to the `$PATH`:
-
-```bash
-export PATH="$HOME/utils:$PATH"
-```
-
-### Add custom commands without creating a new fork
-
-If `~/.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.
-
-My `~/.extra` looks something like this:
-
-```bash
 # Git credentials
-# Not in the repository, to prevent people from accidentally committing under my name
-GIT_AUTHOR_NAME="Mathias Bynens"
+# Not under version control to prevent people from
+# accidentally committing with your details
+GIT_AUTHOR_NAME="Clemens Stolle"
+GIT_AUTHOR_EMAIL="clemens@example.com"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-git config --global user.name "$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="mathias@mailinator.com"
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+# Set the credentials (modifies ~/.gitconfig)
+git config --global user.name "$GIT_AUTHOR_NAME"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
+
+# Aliases
+alias code="cd ~/Code"
 ```
 
-You could also use `~/.extra` to override settings, functions and aliases from my dotfiles repository. It’s probably better to [fork this repository](https://github.com/mathiasbynens/dotfiles/fork) instead, though.
+N.B. Because the `git/gitconfig` file is copied to `~/.gitconfig`, any private
+git configuration specified in `~/.extra` will not be committed to
+your dotfiles repository.
 
-### Sensible OS X defaults
 
-When setting up a new Mac, you may want to set some sensible OS X defaults:
+## Acknowledgements
 
-```bash
-./.osx
-```
+Inspiration and code was taken from many sources, including:
 
-### Install Homebrew formulae
-
-When setting up a new Mac, you may want to install some common [Homebrew](http://brew.sh/) formulae (after installing Homebrew, of course):
-
-```bash
-./brew.sh
-```
-
-## Feedback
-
-Suggestions/improvements
-[welcome](https://github.com/mathiasbynens/dotfiles/issues)!
-
-## Author
-
-| [![twitter/mathias](http://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](http://twitter.com/mathias "Follow @mathias on Twitter") |
-|---|
-| [Mathias Bynens](https://mathiasbynens.be/) |
-
-## Thanks to…
-
-* @ptb and [his _OS X Lion Setup_ repository](https://github.com/ptb/Mac-OS-X-Lion-Setup)
-* [Ben Alman](http://benalman.com/) and his [dotfiles repository](https://github.com/cowboy/dotfiles)
-* [Chris Gerke](http://www.randomsquared.com/) and his [tutorial on creating an OS X SOE master image](http://chris-gerke.blogspot.com/2012/04/mac-osx-soe-master-image-day-7.html) + [_Insta_ repository](https://github.com/cgerke/Insta)
-* [Cãtãlin Mariş](https://github.com/alrra) and his [dotfiles repository](https://github.com/alrra/dotfiles)
-* [Gianni Chiappetta](http://gf3.ca/) for sharing his [amazing collection of dotfiles](https://github.com/gf3/dotfiles)
-* [Jan Moesen](http://jan.moesen.nu/) and his [ancient `.bash_profile`](https://gist.github.com/1156154) + [shiny _tilde_ repository](https://github.com/janmoesen/tilde)
-* [Lauri ‘Lri’ Ranta](http://lri.me/) for sharing [loads of hidden preferences](http://osxnotes.net/defaults.html)
-* [Matijs Brinkhuis](http://hotfusion.nl/) and his [dotfiles repository](https://github.com/matijs/dotfiles)
-* [Nicolas Gallagher](http://nicolasgallagher.com/) and his [dotfiles repository](https://github.com/necolas/dotfiles)
-* [Sindre Sorhus](http://sindresorhus.com/)
-* [Tom Ryder](http://blog.sanctum.geek.nz/) and his [dotfiles repository](https://github.com/tejr/dotfiles)
-* [Kevin Suttle](http://kevinsuttle.com/) and his [dotfiles repository](https://github.com/kevinSuttle/dotfiles) and [OSXDefaults project](https://github.com/kevinSuttle/OSXDefaults), which aims to provide better documentation for [`~/.osx`](https://mths.be/osx)
-* [Haralan Dobrev](http://hkdobrev.com/)
-* anyone who [contributed a patch](https://github.com/mathiasbynens/dotfiles/contributors) or [made a helpful suggestion](https://github.com/mathiasbynens/dotfiles/issues)
+* [@necolas](https://github.com/necolas) (Nicolas Gallagher)
+  [https://github.com/necolas/dotfiles](https://github.com/necolas/dotfiles)
+* [@mathiasbynens](https://github.com/mathiasbynens) (Mathias Bynens)
+  [https://github.com/mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
+* [@hukl](https://github.com/hukl) (hukl)
+  [https://github.com/hukl/dotfiles](https://github.com/hukl/dotfiles)

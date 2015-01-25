@@ -1,0 +1,20 @@
+#!/bin/bash
+
+run_node() {
+	# update npm
+	npm install -g npm
+
+	# nave
+	npm i -g nave
+
+	# install iojs
+	nave install latest
+
+	# install node
+	nave install stable
+
+	# use node
+	nave usemain stable
+
+	npm i -g jshint jscs couchsurfer
+}
