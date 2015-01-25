@@ -2,6 +2,7 @@
 
 My OS X dotfiles. Heavily inspired by [@necolas](https://github.com/necolas) (Nicolas Gallagher).
 
+![](https://files.klaemo.me/images/terminal.png)
 
 ## How to install
 
@@ -128,10 +129,6 @@ following way:
 </table>
 
 Further details are in the `bash_prompt` file.
-
-Screenshot:
-
-![](http://i.imgur.com/DSJ1G.png)
 
 ### Local/private Bash configuration
 
