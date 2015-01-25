@@ -97,8 +97,6 @@ else
     e_header "Syncing dotfiles..."
     # Pull down the latest changes
     git pull --rebase origin master
-    # Update submodules
-    git submodule update --recursive --init --quiet
 fi
 
 # Install and update packages
