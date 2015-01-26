@@ -1,3 +1,9 @@
+# alias hub as git. This is not dangerous; your normal git commands will all work.
+# hub merely adds some sugar.
+if [ $(type -P hub) ]; then
+	eval "$(hub alias -s)"
+fi
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."

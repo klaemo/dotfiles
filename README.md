@@ -76,8 +76,10 @@ Homebrew formulae:
 * [wget](http://www.gnu.org/software/wget/)
 * [boot2docker](http://boot2docker.io)
 * [ansible](http://ansible.com)
+* [hub](https://github.com/github/hub)
 
 Also newer versions of `grep`, `screen` and `openssh`.
+`hub` (if it exists) will be aliased as `git`.
 
 Node packages:
 
