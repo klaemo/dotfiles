@@ -1,6 +1,6 @@
 # Clemens' Dotfiles
 
-My OS X dotfiles. Heavily inspired by [@necolas](https://github.com/necolas) (Nicolas Gallagher).
+My OS X dotfiles. Originally forked from [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles), later incorporated parts of [necolas/dotfiles](https://github.com/necolas/dotfiles).
 
 ![](https://files.klaemo.me/images/terminal.png)
 
