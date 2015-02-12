@@ -13,8 +13,8 @@ run_node() {
 	# install node
 	nave install stable
 
-	# use node
-	nave usemain stable
+	# use iojs
+	nave usemain latest
 
-	npm i -g jshint jscs couchsurfer
+	npm i -g jshint jscs couchsurfer create-module
 }

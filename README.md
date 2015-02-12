@@ -87,8 +87,9 @@ Node packages:
 * [jscs](https://github.com/jscs-dev/node-jscs)
 * [jshint](http://www.jshint.com/)
 * [couchsurfer](https://github.com/klaemo/couchsurfer)
+* [create-module](https://github.com/finnp/create-module)
 
-It also installs `iojs` with nave, but sets "stable" `node 0.10.35` as the default `node`.
+It also installs `iojs` and `node` with nave and sets `iojs` as the default `node`.
 
 ### Custom OS X defaults
 
