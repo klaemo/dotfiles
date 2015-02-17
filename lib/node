@@ -22,5 +22,5 @@ run_node() {
 	# use iojs
 	nave usemain latest
 
-	npm i -g jshint jscs couchsurfer create-module
+	npm i -g jshint jscs couchsurfer create-module http-server json
 }

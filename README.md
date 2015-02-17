@@ -81,13 +81,15 @@ Homebrew formulae:
 Also newer versions of `grep`, `screen` and `openssh`.
 `hub` (if it exists) will be aliased as `git`.
 
-Node packages:
+Node packages (globally):
 
 * [nave](https://github.com/isaacs/nave)
 * [jscs](https://github.com/jscs-dev/node-jscs)
 * [jshint](http://www.jshint.com/)
 * [couchsurfer](https://github.com/klaemo/couchsurfer)
 * [create-module](https://github.com/finnp/create-module)
+* [http-server](https://www.npmjs.com/package/http-server)
+* [json](http://trentm.com/json)
 
 It also installs `iojs` and `node` with nave and sets `iojs` as the default `node`.
 
