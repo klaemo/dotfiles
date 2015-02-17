@@ -1,6 +1,12 @@
 #!/bin/bash
 
 run_node() {
+	# https://docs.npmjs.com/getting-started/fixing-npm-permissions
+	seek_confirmation "Change the owner of npm's directory's to the current user?"
+	if is_confirmed; then
+		sudo chown -R `whoami` `npm config get prefix`
+	fi
+
 	# update npm
 	npm install -g npm
 
