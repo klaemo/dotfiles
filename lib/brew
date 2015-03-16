@@ -35,6 +35,7 @@ run_brew() {
             'wget'
             'boot2docker'
             'ansible'
+            'ssh-copy-id'
         )
 
         for index in ${!desired_formulae[*]}
