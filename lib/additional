@@ -14,7 +14,7 @@ Additional software to install from AppStore
   Twitter
   Unarchiver
 
-Addition non-AppStore software (run "dotfiles -h" to open in browser)
+Addition non-AppStore software (run "dotfiles -o" to open in browser)
 
   Adobe Source Code Pro - https://github.com/adobe-fonts/source-code-pro/releases
   BitTorrent Sync - https://www.getsync.com/intl/de/
