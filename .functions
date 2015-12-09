@@ -1,6 +1,7 @@
 # start and switch to the specified docker machine
 function docker-switch() {
-	docker-machine start "$@" && sleep 5 && eval "$(docker-machine env $@)";
+	docker-machine start "$@" && sleep 5;
+	eval "$(docker-machine env $@)";
 }
 
 # Simple calculator
