@@ -61,7 +61,7 @@ run_brew() {
         brew install https://raw.github.com/Homebrew/homebrew-dupes/master/rsync.rb
 
         # install Github Hub
-        brew install --HEAD hub
+        brew install hub
 
         # Remove outdated versions from the Cellar
         brew cleanup
