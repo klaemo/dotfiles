@@ -3,20 +3,20 @@
 run_help() {
 
 cat <<EOT
-OS X dotfiles - Nicolas Gallagher - http://nicolasgallagher.com/
+OS X dotfiles - Clemens Stolle
 
 Usage: $(basename "$0") [options]
 
 Options:
     -h, --help      Print this help text
-    -l, --list      Print a list of additional software from AppStore
-    -d, --download 	Download additional non-AppStore software
+    -l, --list      Print a list of third-party apps
+    -o, --open 	    Open websites of third-party apps in the browser
     --no-packages   Suppress package updates
     --no-sync       Suppress pulling from the remote repository
 
-Documentation can be found at https://github.com/necolas/dotfiles/
+Documentation can be found at https://github.com/klaemo/dotfiles/
 
-Copyright (c) Nicolas Gallagher
+Copyright (c) Nicolas Gallagher, Clemens Stolle
 Licensed under the MIT license.
 EOT
 

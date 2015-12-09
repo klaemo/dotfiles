@@ -40,7 +40,7 @@ if [[ "$1" == "-l" || "$1" == "--list" ]]; then
 fi
 
 # List additional software to install
-if [[ "$1" == "-d" || "$1" == "--downloads" ]]; then
+if [[ "$1" == "-o" || "$1" == "--open" ]]; then
     run_download
     exit
 fi

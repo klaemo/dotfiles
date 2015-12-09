@@ -40,11 +40,11 @@ Options:
     </tr>
     <tr>
         <td><code>-l</code>, <code>--list</code></td>
-        <td>List of additional applications from the AppStore</td>
+        <td>Print a list of third-party apps</td>
     </tr>
     <tr>
-        <td><code>-d</code>, <code>--download</code></td>
-        <td>Download additional non-AppStore software</td>
+        <td><code>-o</code>, <code>--open</code></td>
+        <td>Open websites of third-party apps in the browser</td>
     </tr>
     <tr>
         <td><code>--no-packages</code></td>
