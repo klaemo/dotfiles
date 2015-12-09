@@ -13,14 +13,9 @@ run_node() {
 	# nave
 	npm i -g nave
 
-	# install iojs
-	nave install latest
-
 	# install node
 	nave install stable
+	nave usemain stable
 
-	# use iojs
-	nave usemain latest
-
-	npm i -g jshint jscs couchsurfer create-module http-server json
+	npm i -g standard couchsurfer create-module http-server json
 }
