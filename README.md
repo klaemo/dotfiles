@@ -74,7 +74,6 @@ Homebrew formulae:
 * [rsync](https://rsync.samba.org/) (latest version, rather than the out-dated OS X installation)
 * [tree](http://mama.indstate.edu/users/ice/tree/)
 * [wget](http://www.gnu.org/software/wget/)
-* [boot2docker](http://boot2docker.io)
 * [ansible](http://ansible.com)
 * [hub](https://github.com/github/hub)
 

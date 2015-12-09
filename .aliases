@@ -21,7 +21,6 @@ alias h="history"
 alias j="jobs"
 
 # docker shortcuts
-alias b2d="boot2docker"
 alias d="docker"
 alias dri="docker run --rm -i -t"
 

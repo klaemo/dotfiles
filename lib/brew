@@ -33,7 +33,6 @@ run_brew() {
             'node'
             'tree'
             'wget'
-            'boot2docker'
             'ansible'
             'ssh-copy-id'
         )
