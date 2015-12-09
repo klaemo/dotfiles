@@ -23,6 +23,8 @@ alias j="jobs"
 # docker shortcuts
 alias d="docker"
 alias dri="docker run --rm -i -t"
+alias ds="docker-switch"
+alias dm="docker-machine"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
