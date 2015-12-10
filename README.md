@@ -89,7 +89,7 @@ Node packages (globally):
 * [http-server](https://www.npmjs.com/package/http-server)
 * [json](http://trentm.com/json)
 
-It also installs `iojs` and `node` with nave and sets `iojs` as the default `node`.
+It also installs the latest `node` with nave and sets it as the default `node`.
 
 ### Custom OS X defaults
 
