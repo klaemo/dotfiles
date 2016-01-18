@@ -18,4 +18,7 @@ run_node() {
 	nave usemain stable
 
 	npm i -g standard couchsurfer create-module http-server json
+
+	# install npm tab completion
+	npm completion > /usr/local/etc/bash_completion.d/npm
 }
