@@ -23,7 +23,6 @@ alias j="jobs"
 # docker shortcuts
 alias d="docker"
 alias dri="docker run --rm -i -t"
-alias ds="docker-switch"
 alias dm="docker-machine"
 alias docker-rm-exited="docker ps -a --filter "status=exited" -q | xargs docker rm"
 alias docker-rm-untagged="docker images --filter "dangling=true" -q | xargs docker rmi"

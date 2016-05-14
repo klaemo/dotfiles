@@ -1,7 +1,6 @@
-# start and switch to the specified docker machine
-function docker-switch() {
-	docker-machine start "$@" && sleep 5;
-	eval "$(docker-machine env $@)";
+# start VSCODE as "code" from the terminal
+function code () {
+	VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*;
 }
 
 # Simple calculator
