@@ -166,6 +166,10 @@ N.B. Because the `git/gitconfig` file is copied to `~/.gitconfig`, any private
 git configuration specified in `~/.extra` will not be committed to
 your dotfiles repository.
 
+### Signing Git commits with GPG
+
+* [Setting up GPG for Git and Github](https://help.github.com/articles/generating-a-gpg-key/)
+* [Setting up OSX Keychain for GPG](https://gist.github.com/sindresorhus/98add7be608fad6b5376a895e5a59972)
 
 ## Acknowledgements
 

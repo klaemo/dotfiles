@@ -20,21 +20,24 @@ run_brew() {
         local list_formulae
         local -a missing_formulae
         local -a desired_formulae=(
-            'coreutils' # GNU core utilities (those that come with OS X are outdated)
-            'git'
             'ack'
+            'ansible'
             'bash'
             'bash-completion'
-            'homebrew/dupes/grep'
-            'homebrew/dupes/screen'
-            'homebrew/dupes/openssh'
+            'coreutils' # GNU core utilities (those that come with OS X are outdated)
             'ffmpeg'
+            'git'
+            'gnupg'
+            'gpg-agent'
             'graphicsmagick'
+            'homebrew/dupes/grep'
+            'homebrew/dupes/openssh'
+            'homebrew/dupes/screen'
             'node'
+            'pinentry-mac'
+            'ssh-copy-id'
             'tree'
             'wget'
-            'ansible'
-            'ssh-copy-id'
         )
 
         for index in ${!desired_formulae[*]}
