@@ -74,8 +74,8 @@ Homebrew formulae:
 * [rsync](https://rsync.samba.org/) (latest version, rather than the out-dated OS X installation)
 * [tree](http://mama.indstate.edu/users/ice/tree/)
 * [wget](http://www.gnu.org/software/wget/)
-* [ansible](http://ansible.com)
 * [hub](https://github.com/github/hub)
+* [httpie](https://github.com/jkbrzt/httpie)
 
 Also newer versions of `grep`, `screen` and `openssh`.
 `hub` (if it exists) will be aliased as `git`.

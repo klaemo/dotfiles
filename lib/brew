@@ -21,7 +21,6 @@ run_brew() {
         local -a missing_formulae
         local -a desired_formulae=(
             'ack'
-            'ansible'
             'bash'
             'bash-completion'
             'coreutils' # GNU core utilities (those that come with OS X are outdated)
@@ -33,6 +32,8 @@ run_brew() {
             'homebrew/dupes/grep'
             'homebrew/dupes/openssh'
             'homebrew/dupes/screen'
+            'hub'
+            'httpie'
             'node'
             'pinentry-mac'
             'ssh-copy-id'
@@ -62,9 +63,6 @@ run_brew() {
         # use latest rsync rather than out-dated OS X rsync
         # install separately from the main formulae list to fix gh-19
         brew install https://raw.github.com/Homebrew/homebrew-dupes/master/rsync.rb
-
-        # install Github Hub
-        brew install hub
 
         # Remove outdated versions from the Cellar
         brew cleanup
