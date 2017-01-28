@@ -4,12 +4,13 @@ run_download() {
 e_header "Opening pages of third-party applications..."
 
 open https://github.com/adobe-fonts/source-code-pro/releases
-open https://www.getsync.com/intl/de/
+open https://www.resilio.com/individuals/
 open https://agilebits.com/downloads
 open https://justgetflux.com
 open https://www.dropbox.com/install
 open https://imageoptim.com
 open https://slack.com/downloads
 open http://www.sublimetext.com/3
+open https://code.visualstudio.com
 open http://sourceforge.net/projects/xca/
 }

@@ -6,7 +6,6 @@ cat <<EOT
 Additional software to install from AppStore
 
   Divvy
-  LimeChat
   Pixelmator
   Timing
   Unarchiver
@@ -15,12 +14,13 @@ Addition non-AppStore software (run "dotfiles -o" to open in browser)
 
   1Password - https://agilebits.com/downloads
   Adobe Source Code Pro - https://github.com/adobe-fonts/source-code-pro/releases
-  BitTorrent Sync - https://www.getsync.com/intl/de/
+  BitTorrent Sync - https://www.resilio.com/individuals/
   Dropbox - https://www.dropbox.com/install
   F.lux - https://justgetflux.com
   ImageOptim - https://imageoptim.com
   Slack - https://slack.com/downloads
   SublimeText 3 - http://www.sublimetext.com/3
+  VSCode - https://code.visualstudio.com
   XCA - http://sourceforge.net/projects/xca/
 
 EOT
