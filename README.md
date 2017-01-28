@@ -82,14 +82,13 @@ Also newer versions of `grep`, `screen` and `openssh`.
 
 Node packages (globally):
 
-* [nave](https://github.com/isaacs/nave)
 * [standard](http://standardjs.com)
 * [couchsurfer](https://github.com/klaemo/couchsurfer)
 * [create-module](https://github.com/finnp/create-module)
 * [http-server](https://www.npmjs.com/package/http-server)
 * [json](http://trentm.com/json)
 
-It also installs the latest `node` with nave and sets it as the default `node`.
+It also installs the latest `node` with nvm and sets it as the default `node`.
 
 ### Custom OS X defaults
 
@@ -99,8 +98,6 @@ also be applied independently by running the following command:
 ```bash
 $ osxdefaults
 ```
-
-This also installs custom Sublime Text settings.
 
 ### Custom bash prompt
 
