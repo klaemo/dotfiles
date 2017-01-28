@@ -2,22 +2,22 @@
 
 run_node() {
 	# https://docs.npmjs.com/getting-started/fixing-npm-permissions
-	seek_confirmation "Change the owner of npm's directory's to the current user?"
-	if is_confirmed; then
-		sudo chown -R `whoami` `npm config get prefix`
-	fi
+	# seek_confirmation "Change the owner of npm's directory's to the current user?"
+	# if is_confirmed; then
+	# 	sudo chown -R `whoami` `npm config get prefix`
+	# fi
+
+	# install nvm
+	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+
+	# install latest node LTS
+	nvm install --lts
 
 	# update npm
-	npm install -g npm
+	npm i -g npm
 
-	# nave
-	npm i -g nave
-
-	# install node
-	nave install stable
-	nave usemain stable
-
-	npm i -g standard couchsurfer create-module http-server json
+	# install node utilities
+	npm i -g cloc speed-test standard http-server json serve tldr source-map-explorer
 
 	# install npm tab completion
 	npm completion > /usr/local/etc/bash_completion.d/npm

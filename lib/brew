@@ -34,7 +34,6 @@ run_brew() {
             'homebrew/dupes/screen'
             'hub'
             'httpie'
-            'node'
             'pinentry-mac'
             'ssh-copy-id'
             'tree'
