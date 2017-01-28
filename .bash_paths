@@ -13,7 +13,6 @@ declare -a dirs_to_append=(
     "/usr/local/sbin"
     "$HOME/bin"
     "$HOME/.dotfiles/bin"
-    "$(brew --prefix coreutils)/libexec/gnubin" # Add brew-installed GNU core utilities bin
 )
 
 # Prepend directories to PATH
