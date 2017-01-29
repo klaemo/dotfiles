@@ -1,3 +1,6 @@
+# http://apple.stackexchange.com/questions/119711/why-doesnt-mac-os-x-source-bashrc/119714#119714
+if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+
 # Load the shell dotfiles, and then some:
 # * ~/.extra can be used for other settings you don’t want to commit.
 for file in ~/.{path,bash_prompt,exports,aliases,functions,bash_paths,extra}; do

@@ -11,14 +11,13 @@ run_node() {
 	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 
 	# make nvm immediately available
-	NVM_DIR="/Users/clemens/.nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+	source ~/.bash_profile
 
 	# install latest node LTS
 	nvm install --lts
 
 	# update npm
-	npm i -g npm
+	npm update -g npm
 
 	# install node utilities
 	npm i -g cloc speed-test standard http-server json serve tldr source-map-explorer

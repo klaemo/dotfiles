@@ -106,8 +106,6 @@ else
     printf "Updating packages...\n"
     # Install Homebrew formulae
     run_brew
-    # Install Node packages
-    run_node
 
     # Show list of additional AppStore Software
     run_additional
@@ -128,7 +126,7 @@ mirrorfiles() {
 
     # Create the necessary symbolic links between the `.dotfiles` and `HOME`
     # directory.
-    link ".bashrc"          ".bashrc"
+    # link ".bashrc"          ".bashrc"
     link ".aliases"         ".aliases"
     link ".bash_profile"    ".bash_profile"
     link ".bash_prompt"     ".bash_prompt"
@@ -152,8 +150,19 @@ if is_confirmed; then
     mirrorfiles
     source ${HOME}/.bash_profile
 else
-    printf "Aborting...\n"
-    exit 1
+    printf "Skipped dotfiles setup.\n"
+fi
+
+# Install and update node packages
+if [[ $no_packages ]]; then
+    printf "Skipped node installation.\n"
+else
+    printf "Setting up node...\n"
+
+    # Install Node packages
+    run_node
+
+    e_success "Node setup complete!"
 fi
 
 # Ask before potentially overwriting OS X defaults
