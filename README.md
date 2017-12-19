@@ -166,7 +166,7 @@ your dotfiles repository.
 ### Signing Git commits with GPG
 
 * [Setting up GPG for Git and Github](https://help.github.com/articles/generating-a-gpg-key/)
-* [Setting up OSX Keychain for GPG](https://gist.github.com/sindresorhus/98add7be608fad6b5376a895e5a59972)
+* [Setting up OSX Keychain for GPG](https://www.philipphoffmann.de/2017/08/23/git-gpg-github-gitlab-macos/)
 
 ## Acknowledgements
 
