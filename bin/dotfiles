@@ -53,6 +53,9 @@ done
 if ! type_exists 'brew'; then
     e_header "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # make brew immediately available
+    eval $(/opt/homebrew/bin/brew shellenv)
 fi
 
 # Check for git
