@@ -2,8 +2,10 @@
 
 run_node() {
 	# install volta
-	curl https://get.volta.sh | bash
+	if ! type_exists 'volta'; then
+		curl https://get.volta.sh | bash
 
-	# install volta completions
-	~/.volta/bin/volta completions -o ~/.zsh/_volta zsh
+		# install volta completions
+		~/.volta/bin/volta completions -o ~/.zsh/_volta zsh
+	fi
 }
