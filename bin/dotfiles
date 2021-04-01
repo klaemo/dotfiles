@@ -130,7 +130,7 @@ if is_confirmed; then
     fi
     git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
     mirrorfiles
-    source ${HOME}/.zshrc
+    zsh -c "source ~/.zshrc"
 else
     printf "Skipped dotfiles setup.\n"
 fi
