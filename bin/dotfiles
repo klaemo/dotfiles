@@ -21,8 +21,6 @@ fi
 cd ${DOTFILES_DIRECTORY}
 
 source ./lib/help
-source ./lib/additional
-source ./lib/download
 source ./lib/utils
 source ./lib/brew
 source ./lib/node
@@ -30,18 +28,6 @@ source ./lib/node
 # Help text
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
     run_help
-    exit
-fi
-
-# List additional software to install
-if [[ "$1" == "-l" || "$1" == "--list" ]]; then
-    run_additional
-    exit
-fi
-
-# List additional software to install
-if [[ "$1" == "-o" || "$1" == "--open" ]]; then
-    run_download
     exit
 fi
 
@@ -66,7 +52,7 @@ done
 # Check for Homebrew
 if ! type_exists 'brew'; then
     e_header "Installing Homebrew..."
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Check for git
@@ -106,11 +92,6 @@ else
     printf "Updating packages...\n"
     # Install Homebrew formulae
     run_brew
-
-    # Show list of additional AppStore Software
-    run_additional
-
-    printf "\nRun 'dotfiles -d' to download additional non-AppStore software.\n"
 fi
 
 link() {
@@ -126,19 +107,13 @@ mirrorfiles() {
 
     # Create the necessary symbolic links between the `.dotfiles` and `HOME`
     # directory.
-    # link ".bashrc"          ".bashrc"
-    link ".aliases"         ".aliases"
-    link ".bash_profile"    ".bash_profile"
-    link ".bash_prompt"     ".bash_prompt"
-    link ".bash_paths"      ".bash_paths"
-    link ".exports"         ".exports"
-    link ".functions"       ".functions"
-    link ".curlrc"          ".curlrc"
     link ".wgetrc"          ".wgetrc"
     link ".inputrc"         ".inputrc"
     link ".gitattributes"   ".gitattributes"
     link ".gitignore"       ".gitignore"
     link ".hushlogin"       ".hushlogin"
+    line ".zshenv"          ".zshenv"
+    line ".zshrc"           ".zshrc"
 
     e_success "Dotfiles update complete!"
 }
@@ -147,8 +122,10 @@ mirrorfiles() {
 seek_confirmation "Warning: This step may overwrite your existing dotfiles."
 
 if is_confirmed; then
+    mkdir -p "$HOME/.zsh"
+    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
     mirrorfiles
-    source ${HOME}/.bash_profile
+    source ${HOME}/.zshrc
 else
     printf "Skipped dotfiles setup.\n"
 fi
@@ -163,14 +140,4 @@ else
     run_node
 
     e_success "Node setup complete!"
-fi
-
-# Ask before potentially overwriting OS X defaults
-seek_confirmation "Warning: This step may modify your OS X system defaults."
-
-if is_confirmed; then
-    bash ./bin/osxdefaults
-    e_success "OS X settings updated! You may need to restart."
-else
-    printf "Skipped OS X settings update.\n"
 fi

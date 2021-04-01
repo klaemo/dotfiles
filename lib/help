@@ -9,8 +9,6 @@ Usage: $(basename "$0") [options]
 
 Options:
     -h, --help      Print this help text
-    -l, --list      Print a list of third-party apps
-    -o, --open 	    Open websites of third-party apps in the browser
     --no-packages   Suppress package updates
     --no-sync       Suppress pulling from the remote repository
 
