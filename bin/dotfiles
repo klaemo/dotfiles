@@ -115,8 +115,8 @@ mirrorfiles() {
     link ".gitattributes"   ".gitattributes"
     link ".gitignore"       ".gitignore"
     link ".hushlogin"       ".hushlogin"
-    line ".zshenv"          ".zshenv"
-    line ".zshrc"           ".zshrc"
+    link ".zshenv"          ".zshenv"
+    link ".zshrc"           ".zshrc"
 
     e_success "Dotfiles update complete!"
 }
@@ -125,7 +125,9 @@ mirrorfiles() {
 seek_confirmation "Warning: This step may overwrite your existing dotfiles."
 
 if is_confirmed; then
-    mkdir -p "$HOME/.zsh"
+    if [[ ! -d ${HOME}/.zsh ]]; then
+        mkdir -p "$HOME/.zsh"
+    fi
     git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
     mirrorfiles
     source ${HOME}/.zshrc
