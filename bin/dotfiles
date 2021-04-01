@@ -125,7 +125,7 @@ mirrorfiles() {
 seek_confirmation "Warning: This step may overwrite your existing dotfiles."
 
 if is_confirmed; then
-    if [[ ! -a ${HOME}/.zsh ]]; then
+    if [[ ! -d ${HOME}/.zsh ]]; then
         mkdir -p "$HOME/.zsh"
     fi
     git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
