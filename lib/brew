@@ -21,18 +21,13 @@ run_brew() {
         local -a missing_formulae
         local -a desired_formulae=(
             'ansible'
-            'bash-completion'
-            'bash'
+            'ansible-lint'
             'git'
-            'gnupg'
-            'gpg-agent'
-            'graphicsmagick'
+            'htop'
             'httpie'
-            'hub'
-            'pinentry-mac'
-            'ssh-copy-id'
-            'tree'
+            'rsync'
             'wget'
+            'zsh-syntax-highlighting'
         )
 
         for index in ${!desired_formulae[*]}
@@ -53,12 +48,6 @@ run_brew() {
 
             [[ $? ]] && e_success "Done"
         fi
-
-        # Switch to using brew-installed bash as default shell
-        if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
-            echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
-            chsh -s /usr/local/bin/bash;
-        fi;
 
         # Remove outdated versions from the Cellar
         brew cleanup
