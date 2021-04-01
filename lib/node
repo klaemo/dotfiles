@@ -5,5 +5,5 @@ run_node() {
 	curl https://get.volta.sh | bash
 
 	# install volta completions
-	volta completions -o ~/.zsh/_volta zsh
+	~/.volta/bin/volta completions -o ~/.zsh/_volta zsh
 }
