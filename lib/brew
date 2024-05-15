@@ -25,6 +25,7 @@ run_brew() {
             'git'
             'htop'
             'httpie'
+            'pure'
             'rsync'
             'wget'
             'zsh-syntax-highlighting'

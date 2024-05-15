@@ -1,12 +1,9 @@
 # Prompt
 # https://github.com/sindresorhus/pure
-fpath+=$HOME/.zsh/pure
+fpath+=("$HOMEBREW_PREFIX/share/zsh/site-functions")
 autoload -U promptinit
 promptinit
 prompt pure
-
-# Homebrew
-eval $(/opt/homebrew/bin/brew shellenv)
 
 # Completions
 fpath+=$HOME/.zsh
