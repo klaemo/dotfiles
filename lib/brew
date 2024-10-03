@@ -23,6 +23,7 @@ run_brew() {
             'bat'
             'fzf'
             'git'
+            'gh'
             'htop'
             'httpie'
             'pure'
