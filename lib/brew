@@ -20,8 +20,8 @@ run_brew() {
         local list_formulae
         local -a missing_formulae
         local -a desired_formulae=(
-            'ansible'
-            'ansible-lint'
+            'bat'
+            'fzf'
             'git'
             'htop'
             'httpie'

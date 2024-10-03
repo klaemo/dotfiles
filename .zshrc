@@ -1,3 +1,6 @@
+# Homebrew
+eval $(/opt/homebrew/bin/brew shellenv)
+
 # Prompt
 # https://github.com/sindresorhus/pure
 fpath+=("$HOMEBREW_PREFIX/share/zsh/site-functions")
