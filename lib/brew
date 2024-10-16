@@ -27,6 +27,7 @@ run_brew() {
             'gh'
             'htop'
             'httpie'
+            'lazygit'
             'pure'
             'rsync'
             'wget'
