@@ -8,6 +8,9 @@ export LC_ALL='en_US.UTF-8';
 # Highlight section titles in manual pages.
 export LESS_TERMCAP_md=$(tput setaf 136);
 
+# Hide brew env hints
+export HOMEBREW_NO_ENV_HINTS=true
+
 # ~/.zsh_extra can be used for other settings you don’t want to commit.
 if [[ -a ${HOME}/.zsh_extra ]]; then
   source "$HOME/.zsh_extra";
