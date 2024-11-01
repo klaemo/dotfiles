@@ -1,9 +1,10 @@
 [window]
 dynamic_padding = true
-padding = { x = 14, y = 14 }
-decorations = "transparent"
+padding = { x = 16, y = 14 }
+decorations = "none"
 opacity = 0.9
 blur = true
+# Use right ⌥ key as Alt to be able to control zellij with it
 option_as_alt = "OnlyRight"
 startup_mode = "Maximized"
 
