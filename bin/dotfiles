@@ -107,6 +107,8 @@ mirrorfiles() {
     # Any global git commands in `~/.bash_profile.local` will be written to
     # `.gitconfig`. This prevents them being committed to the repository.
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/.gitconfig  ${HOME}/.gitconfig
+
+    mkdir -p ${HOME}/.config/alacritty ${HOME}/.config/zellij
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/settings/alacritty.toml  ${HOME}/.config/alacritty/alacritty.toml
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/settings/zellij-config.kdl  ${HOME}/.config/zellij/config.kdl
 
