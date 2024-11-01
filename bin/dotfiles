@@ -108,7 +108,7 @@ mirrorfiles() {
     # `.gitconfig`. This prevents them being committed to the repository.
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/.gitconfig  ${HOME}/.gitconfig
 
-    mkdir -p ${HOME}/.config/alacritty ${HOME}/.config/zellij
+    mkdir -p ${HOME}/.config/{alacritty,zellij}
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/settings/alacritty.toml  ${HOME}/.config/alacritty/alacritty.toml
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/settings/zellij-config.kdl  ${HOME}/.config/zellij/config.kdl
 
