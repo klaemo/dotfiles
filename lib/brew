@@ -20,6 +20,7 @@ run_brew() {
         local list_formulae
         local -a missing_formulae
         local -a desired_formulae=(
+            'alacritty'
             'awscli'
             'bat'
             'fzf'
@@ -31,6 +32,7 @@ run_brew() {
             'pure'
             'rsync'
             'wget'
+            'zellij'
             'zsh-syntax-highlighting'
         )
 
