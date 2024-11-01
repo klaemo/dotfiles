@@ -11,7 +11,7 @@ startup_mode = "Maximized"
 TERM = "xterm-256color"
 
 [terminal.shell]
-program = "/opt/homebrew/bin/zellij"
+program = "zellij"
 
 [font]
 normal = { family = "JetBrains Mono", style = "Regular" }
@@ -51,5 +51,3 @@ blue = "#57c7ff"
 magenta = "#ff6ac1"
 cyan = "#9aedfe"
 white = "#eff0eb"
-
-[terminal]

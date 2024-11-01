@@ -31,6 +31,13 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 bindkey '^[[A' up-line-or-search # search history on up arrow
 bindkey '^[[B' down-line-or-search # search history on down arrow
 
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --preview 'bat -n --color=always {}'"
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 # Syntax highlighting - must be last in this file!
 # https://github.com/zsh-users/zsh-syntax-highlighting
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
