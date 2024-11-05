@@ -1,5 +1,7 @@
-# Homebrew
-eval $(/opt/homebrew/bin/brew shellenv)
+if [ -d "/opt/homebrew" ]; then
+  # Homebrew
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Prompt
 # https://github.com/sindresorhus/pure
@@ -37,6 +39,34 @@ export FZF_CTRL_T_OPTS="
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+
+# Prefer US English and use UTF-8.
+export LANG='en_US.UTF-8';
+export LC_ALL='en_US.UTF-8';
+
+# Highlight section titles in manual pages.
+export LESS_TERMCAP_md=$(tput setaf 136);
+
+# Hide brew env hints
+export HOMEBREW_NO_ENV_HINTS=true
+
+export VOLTA_HOME="$HOME/.volta";
+
+path=(
+  "$VOLTA_HOME/bin"         # Highest priority
+  "/usr/local/bin"
+  ${path}                   # Existing paths
+)
+typeset -U path             # Remove duplicates
+export PATH
+
+# ~/.zsh_extra can be used for other settings you don’t want to commit.
+if [[ -a ${HOME}/.zsh_extra ]]; then
+  source "$HOME/.zsh_extra";
+fi
+
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
 
 # Syntax highlighting - must be last in this file!
 # https://github.com/zsh-users/zsh-syntax-highlighting

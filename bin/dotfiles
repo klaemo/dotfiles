@@ -118,8 +118,10 @@ mirrorfiles() {
     link ".gitattributes"   ".gitattributes"
     link ".gitignore"       ".gitignore"
     link ".hushlogin"       ".hushlogin"
-    link ".zshenv"          ".zshenv"
     link ".zshrc"           ".zshrc"
+    link ".aliases"         ".aliases"
+
+    rm -f "$HOME/.zshenv" "$HOME/.zprofile"
 
     e_success "Dotfiles update complete!"
 }
@@ -131,7 +133,6 @@ if is_confirmed; then
     if [[ ! -d ${HOME}/.zsh ]]; then
         mkdir -p "$HOME/.zsh"
     fi
-    git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
     mirrorfiles
     zsh -c "source ~/.zshrc"
 else
