@@ -54,6 +54,7 @@ export VOLTA_HOME="$HOME/.volta";
 
 path=(
   "$VOLTA_HOME/bin"         # Highest priority
+  "$HOME/.dotfiles/bin"
   "/usr/local/bin"
   ${path}                   # Existing paths
 )
