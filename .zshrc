@@ -33,13 +33,6 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 bindkey '^[[A' up-line-or-search # search history on up arrow
 bindkey '^[[B' down-line-or-search # search history on down arrow
 
-# Preview file content using bat (https://github.com/sharkdp/bat)
-export FZF_CTRL_T_OPTS="
-  --preview 'bat -n --color=always {}'"
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
@@ -49,6 +42,15 @@ export LESS_TERMCAP_md=$(tput setaf 136);
 
 # Hide brew env hints
 export HOMEBREW_NO_ENV_HINTS=true
+
+BAT_THEME="TwoDark"
+
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --preview 'bat -n --color=always {}'"
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 export VOLTA_HOME="$HOME/.volta";
 

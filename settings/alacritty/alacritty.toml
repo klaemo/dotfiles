@@ -9,8 +9,6 @@ padding = { x = 16, y = 14 }
 decorations = "none"
 opacity = 0.9
 blur = true
-# Use left ⌥ key as Alt to be able to control zellij with it
-option_as_alt = "OnlyLeft"
 startup_mode = "Maximized"
 
 [env]
