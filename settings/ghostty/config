@@ -1,3 +1,8 @@
 theme = catppuccin-frappe
-font-family = "JetBrains Mono"
+bold-is-bright = true
 window-padding-x = 6
+window-padding-y = 6
+
+# emulate a maximized-by-default behavior
+window-height = 1000
+window-width = 1000
