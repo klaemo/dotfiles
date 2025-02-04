@@ -5,8 +5,8 @@ import = [
 
 [window]
 dynamic_padding = true
-padding = { x = 16, y = 14 }
-decorations = "none"
+padding = { x = 16, y = 28 }
+decorations = "transparent"
 opacity = 0.9
 blur = true
 startup_mode = "Maximized"
