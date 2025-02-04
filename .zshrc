@@ -71,6 +71,9 @@ fi
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
+# bun completions
+[ -s "/Users/clemens/.bun/_bun" ] && source "/Users/clemens/.bun/_bun"
+
 # Syntax highlighting - must be last in this file!
 # https://github.com/zsh-users/zsh-syntax-highlighting
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
