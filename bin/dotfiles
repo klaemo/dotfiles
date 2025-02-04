@@ -110,6 +110,7 @@ mirrorfiles() {
 
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/settings/alacritty ${HOME}/.config/
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/settings/zellij ${HOME}/.config/
+    rsync -avz --quiet ${DOTFILES_DIRECTORY}/settings/ghostty ${HOME}/.config/
 
     # Create the necessary symbolic links between the `.dotfiles` and `HOME`
     # directory.

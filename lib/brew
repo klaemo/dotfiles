@@ -20,7 +20,6 @@ run_brew() {
         local list_formulae
         local -a missing_formulae
         local -a desired_formulae=(
-            'alacritty'
             'awscli'
             'bat'
             'fzf'
@@ -51,6 +50,33 @@ run_brew() {
             e_header "Installing missing Homebrew formulae..."
             # Install all missing formulae
             brew install $list_formulae
+
+            [[ $? ]] && e_success "Done"
+        fi
+
+        e_header "Checking status of desired Homebrew casks..."
+        local list_casks
+        local -a missing_casks
+        local -a desired_casks=(
+            'alacritty'
+            'ghostty'
+        )
+
+        for index in ${!desired_casks[*]}
+        do
+            if ! formula_exists ${desired_casks[$index]}; then
+                # Store the name (and options) of every missing formula
+                missing_casks=("${missing_casks[@]}" "${desired_casks[$index]}")
+            fi
+        done
+
+        if [[ "$missing_casks" ]]; then
+            # Convert the array of missing formula into a list of space-separate strings
+            list_casks=$( printf "%s " "${missing_casks[@]}" )
+
+            e_header "Installing missing Homebrew casks..."
+            # Install all missing casks
+            brew install --cask $list_casks
 
             [[ $? ]] && e_success "Done"
         fi
