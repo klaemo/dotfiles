@@ -7,7 +7,17 @@ window-padding-y = 6
 window-height = 1000
 window-width = 1000
 
-# zellij compatibility
+# zellij compatibility (super+shift is used as secondary leader key
 # macos-option-as-alt = left
-# keybind = alt+left=unbind
-# keybind = alt+right=unbind
+keybind = super+shift+up=unbind
+keybind = super+shift+down=unbind
+keybind = super+shift+h=unbind
+keybind = super+shift+j=unbind
+keybind = super+shift+k=unbind
+keybind = super+shift+l=unbind
+keybind = super+shift+minus=unbind
+keybind = super+shift+plus=unbind
+# for some reason these also get in the way
+keybind = super+plus=unbind
+keybind = super+minus=unbind
+keybind = super+equal=unbind
