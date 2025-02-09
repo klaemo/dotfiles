@@ -20,8 +20,9 @@ compinit -u
 setopt NO_CASE_GLOB # case-insensitive globbing
 setopt AUTO_CD # change directories without `cd` (like `...`)
 setopt EXTENDED_HISTORY
-setopt SHARE_HISTORY # share history across multiple zsh sessions
+# setopt SHARE_HISTORY # share history across multiple zsh sessions
 setopt APPEND_HISTORY # append to history
+setopt INC_APPEND_HISTORY # add commands to history as they are typed, don't wait until shell exit
 setopt HIST_IGNORE_DUPS # do not store duplicates
 setopt HIST_REDUCE_BLANKS # removes blank lines from history
 setopt CORRECT
