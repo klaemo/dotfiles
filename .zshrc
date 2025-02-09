@@ -45,6 +45,10 @@ export HOMEBREW_NO_ENV_HINTS=true
 
 BAT_THEME="Catppuccin Frappe"
 
+# fix zellij completions & aliases
+# https://github.com/zellij-org/zellij/issues/1933
+. <( zellij setup --generate-completion zsh | sed -Ee 's/^(_(zellij) ).*/compdef \1\2/' )
+
 # Preview file content using bat (https://github.com/sharkdp/bat)
 export FZF_CTRL_T_OPTS="
   --preview 'bat -n --color=always {}'"

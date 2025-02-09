@@ -6,3 +6,8 @@ window-padding-y = 6
 # emulate a maximized-by-default behavior
 window-height = 1000
 window-width = 1000
+
+# zellij compatibility
+# macos-option-as-alt = left
+# keybind = alt+left=unbind
+# keybind = alt+right=unbind
