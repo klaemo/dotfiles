@@ -2,3 +2,6 @@ alias lg='lazygit'
 alias zd='zellij --layout dev'
 alias zls='zellij ls'
 alias za='zellij attach'
+
+alias c='open $1 -a "Cursor"'
+alias v='open $1 -a "Visual Studio Code"'
