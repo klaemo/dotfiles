@@ -108,7 +108,6 @@ mirrorfiles() {
     # `.gitconfig`. This prevents them being committed to the repository.
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/.gitconfig  ${HOME}/.gitconfig
 
-    rsync -avz --quiet ${DOTFILES_DIRECTORY}/settings/alacritty ${HOME}/.config/
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/settings/zellij ${HOME}/.config/
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/settings/ghostty ${HOME}/.config/
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/settings/bat ${HOME}/.config/

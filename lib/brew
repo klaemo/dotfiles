@@ -58,7 +58,6 @@ run_brew() {
         local list_casks
         local -a missing_casks
         local -a desired_casks=(
-            'alacritty'
             'ghostty'
         )
 
