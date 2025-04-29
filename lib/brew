@@ -23,8 +23,8 @@ run_brew() {
             'awscli'
             'bat'
             'fzf'
-            'git'
             'gh'
+            'git'
             'htop'
             'httpie'
             'lazygit'
@@ -58,7 +58,9 @@ run_brew() {
         local list_casks
         local -a missing_casks
         local -a desired_casks=(
+            'cursor'
             'ghostty'
+            'orbstack'
         )
 
         for index in ${!desired_casks[*]}
