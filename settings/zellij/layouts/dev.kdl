@@ -6,7 +6,7 @@ layout {
             pane
         }
         floating_panes {
-            pane command="/opt/homebrew/bin/lazygit" {
+            pane command="/opt/homebrew/bin/lazygit" start_suspended=true {
                 x "10%"
                 y "10%"
                 width "80%"
@@ -14,7 +14,9 @@ layout {
             }
         }
         pane size=1 borderless=true {
-            plugin location="zellij:compact-bar"
+            plugin location="zellij:compact-bar" {
+                tooltip "F1"
+            }
         }
     }
 }

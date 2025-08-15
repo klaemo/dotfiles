@@ -295,7 +295,10 @@ themes {
 // Plugin aliases - can be used to change the implementation of Zellij
 // changing these requires a restart to take effect
 plugins {
-    compact-bar location="zellij:compact-bar"
+    // compact-bar location="zellij:compact-bar"
+    compact-bar location="zellij:compact-bar" {
+      tooltip "F1"
+    }
     configuration location="zellij:configuration"
     filepicker location="zellij:strider" {
         cwd "/"
@@ -331,7 +334,7 @@ theme "catppuccin-frappe"
 // Choose the base input mode of zellij.
 // Default: normal
 //
-default_mode "normal"
+default_mode "locked"
 
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
