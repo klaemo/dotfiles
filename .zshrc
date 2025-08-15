@@ -85,7 +85,7 @@ fi
 [[ -f ~/.aliases ]] && source ~/.aliases
 
 # bun completions
-[ -s "/Users/clemens/.bun/_bun" ] && source "/Users/clemens/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # Syntax highlighting - must be last in this file!
 # https://github.com/zsh-users/zsh-syntax-highlighting
