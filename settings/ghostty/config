@@ -1,13 +1,13 @@
-theme = catppuccin-frappe
-bold-is-bright = true
-window-padding-x = 6
-window-padding-y = 6
+theme = Catppuccin Frappe
+# bold-is-bright = true
+# window-padding-x = 6
+# window-padding-y = 6
 
 # emulate a maximized-by-default behavior
 window-height = 1000
 window-width = 1000
 
-# zellij compatibility (super+shift is used as secondary leader key
+# zellij compatibility (super+shift is used as secondary leader key)
 # macos-option-as-alt = left
 keybind = super+shift+up=unbind
 keybind = super+shift+down=unbind
@@ -21,3 +21,5 @@ keybind = super+shift+plus=unbind
 keybind = super+plus=unbind
 keybind = super+minus=unbind
 keybind = super+equal=unbind
+
+shell-integration-features = ssh-terminfo,ssh-env,sudo
