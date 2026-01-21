@@ -268,6 +268,18 @@ else
 fi
 
 # ------------------------------------------------------------------------------
+# Install opencode
+# ------------------------------------------------------------------------------
+
+if ! command_exists opencode; then
+    e_header "Installing opencode..."
+    curl -fsSL https://opencode.ai/install | bash
+    e_success "opencode installed"
+else
+    e_success "opencode already installed"
+fi
+
+# ------------------------------------------------------------------------------
 # Verification
 # ------------------------------------------------------------------------------
 
