@@ -1,0 +1,6 @@
+# Linux aliases
+
+alias lg='lazygit'
+alias zd='zellij --layout dev'
+alias zls='zellij ls'
+alias za='zellij attach'

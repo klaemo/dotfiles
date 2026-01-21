@@ -1,0 +1,130 @@
+# Linux zshrc - ported from macOS dotfiles
+
+# ------------------------------------------------------------------------------
+# Prompt (pure)
+# https://github.com/sindresorhus/pure
+# ------------------------------------------------------------------------------
+
+fpath+=("$HOME/.zsh/pure")
+autoload -U promptinit
+promptinit
+prompt pure
+
+# ------------------------------------------------------------------------------
+# Completions
+# ------------------------------------------------------------------------------
+
+fpath+=$HOME/.zsh
+autoload -Uz compinit
+compinit -u
+
+# ------------------------------------------------------------------------------
+# Options
+# https://scriptingosx.com/2019/06/moving-to-zsh-part-3-shell-options/
+# ------------------------------------------------------------------------------
+
+setopt NO_CASE_GLOB          # case-insensitive globbing
+setopt AUTO_CD               # change directories without `cd`
+setopt EXTENDED_HISTORY
+setopt APPEND_HISTORY        # append to history
+setopt INC_APPEND_HISTORY    # add commands to history as typed
+setopt HIST_IGNORE_DUPS      # do not store duplicates
+setopt HIST_REDUCE_BLANKS    # remove blank lines from history
+setopt CORRECT
+
+# case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
+bindkey '^[[A' up-line-or-search   # search history on up arrow
+bindkey '^[[B' down-line-or-search # search history on down arrow
+
+# ------------------------------------------------------------------------------
+# Environment
+# ------------------------------------------------------------------------------
+
+# Prefer US English and use UTF-8
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+
+# Highlight section titles in manual pages
+export LESS_TERMCAP_md=$(tput setaf 136)
+
+# bat theme
+export BAT_THEME="Catppuccin Frappe"
+
+# ------------------------------------------------------------------------------
+# fzf
+# ------------------------------------------------------------------------------
+
+# Preview file content using bat
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
+
+# Catppuccin Frappe for fzf
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+--color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+--color=marker:#babbf1,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284 \
+--color=selected-bg:#51576d \
+--multi"
+
+# Set up fzf key bindings and fuzzy completion
+# Try the new --zsh flag first, fall back to sourcing from /usr/share
+if command -v fzf &>/dev/null; then
+    if fzf --zsh &>/dev/null; then
+        source <(fzf --zsh)
+    elif [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+        source /usr/share/doc/fzf/examples/key-bindings.zsh
+        [[ -f /usr/share/doc/fzf/examples/completion.zsh ]] && source /usr/share/doc/fzf/examples/completion.zsh
+    fi
+fi
+
+# ------------------------------------------------------------------------------
+# zellij completions
+# https://github.com/zellij-org/zellij/issues/1933
+# ------------------------------------------------------------------------------
+
+if command -v zellij &>/dev/null; then
+    . <( zellij setup --generate-completion zsh | sed -Ee 's/^(_(zellij) ).*/compdef \1\2/' )
+fi
+
+# ------------------------------------------------------------------------------
+# PATH
+# ------------------------------------------------------------------------------
+
+export VOLTA_HOME="$HOME/.volta"
+
+path=(
+    "$VOLTA_HOME/bin"
+    "$HOME/.local/bin"
+    "$HOME/.dotfiles/bin"
+    "/usr/local/bin"
+    ${path}
+)
+typeset -U path  # Remove duplicates
+export PATH
+
+# ------------------------------------------------------------------------------
+# Extra config & aliases
+# ------------------------------------------------------------------------------
+
+# ~/.zsh_extra can be used for settings you don't want to commit
+if [[ -a ${HOME}/.zsh_extra ]]; then
+    source "$HOME/.zsh_extra"
+fi
+
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# ------------------------------------------------------------------------------
+# Syntax highlighting - must be last!
+# https://github.com/zsh-users/zsh-syntax-highlighting
+# ------------------------------------------------------------------------------
+
+if [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [[ -f $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi

@@ -1,0 +1,49 @@
+layout hide_floating_panes=true {
+    // hide_floating_panes doesn't work with default_tab_template https://github.com/zellij-org/zellij/issues/3392
+    new_tab_template {
+        pane
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar" {
+                tooltip "F1"
+            }
+        }
+    }
+
+    tab name="dev" hide_floating_panes=true {
+        pane split_direction="vertical" { // first logical container
+            // all these panes will be laid out vertically next to each other
+            pane focus=true
+            pane
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar" {
+                tooltip "F1"
+            }
+        }
+        floating_panes {
+            pane command="lazygit" start_suspended=true {
+                x "10%"
+                y "10%"
+                width "80%"
+                height "80%"
+            }
+        }
+    }
+
+    tab name="opencode" hide_floating_panes=true {
+        pane command="opencode" start_suspended=true borderless=true
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar" {
+                tooltip "F1"
+            }
+        }
+        floating_panes {
+            pane command="lazygit" start_suspended=true {
+                x "10%"
+                y "10%"
+                width "80%"
+                height "80%"
+            }
+        }
+    }
+}
