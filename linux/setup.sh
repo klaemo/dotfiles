@@ -165,15 +165,12 @@ e_header "Setting zsh as default shell..."
 
 ZSH_PATH=$(which zsh)
 if [[ "${SHELL}" != "${ZSH_PATH}" ]]; then
-    if grep -q "${ZSH_PATH}" /etc/shells; then
-        chsh -s "${ZSH_PATH}"
-        e_success "Default shell changed to zsh (will take effect on next login)"
-    else
-        e_warning "zsh not in /etc/shells, attempting to add..."
+    if ! grep -q "${ZSH_PATH}" /etc/shells; then
+        e_warning "zsh not in /etc/shells, adding..."
         echo "${ZSH_PATH}" | sudo tee -a /etc/shells
-        chsh -s "${ZSH_PATH}"
-        e_success "Default shell changed to zsh"
     fi
+    sudo chsh -s "${ZSH_PATH}" "${USER}"
+    e_success "Default shell changed to zsh (will take effect on next login)"
 else
     e_success "zsh is already the default shell"
 fi
