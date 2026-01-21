@@ -258,7 +258,7 @@ if ! command_exists volta; then
     e_header "Installing volta..."
     curl https://get.volta.sh | bash -s -- --skip-setup
     e_success "volta installed"
-    
+
     # Generate completions
     if [[ -x "${HOME}/.volta/bin/volta" ]]; then
         "${HOME}/.volta/bin/volta" completions -o "${HOME}/.zsh/_volta" zsh 2>/dev/null || true
@@ -268,12 +268,27 @@ else
 fi
 
 # ------------------------------------------------------------------------------
-# Install opencode
+# Install bun
+# ------------------------------------------------------------------------------
+
+if ! command_exists bun; then
+    e_header "Installing bun..."
+    curl -fsSL https://bun.com/install | bash
+    e_success "bun installed"
+else
+    e_success "bun already installed"
+fi
+
+# ------------------------------------------------------------------------------
+# Install opencode (via bun)
 # ------------------------------------------------------------------------------
 
 if ! command_exists opencode; then
     e_header "Installing opencode..."
-    curl -fsSL https://opencode.ai/install | bash
+    # Ensure bun is in PATH for this session
+    export BUN_INSTALL="${HOME}/.bun"
+    export PATH="${BUN_INSTALL}/bin:${PATH}"
+    bun install -g opencode
     e_success "opencode installed"
 else
     e_success "opencode already installed"
