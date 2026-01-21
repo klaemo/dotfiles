@@ -288,7 +288,7 @@ if ! command_exists opencode; then
     # Ensure bun is in PATH for this session
     export BUN_INSTALL="${HOME}/.bun"
     export PATH="${BUN_INSTALL}/bin:${PATH}"
-    bun install -g opencode
+    bun add -g opencode-ai
     e_success "opencode installed"
 else
     e_success "opencode already installed"
