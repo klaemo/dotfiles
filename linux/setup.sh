@@ -68,7 +68,6 @@ sudo apt-get update -qq
 
 # Core packages (mapped from Homebrew desired_formulae)
 APT_PACKAGES=(
-    awscli
     bat
     curl
     fzf
@@ -77,6 +76,7 @@ APT_PACKAGES=(
     htop
     httpie
     rsync
+    unzip
     wget
     zsh
     zsh-syntax-highlighting
@@ -84,6 +84,22 @@ APT_PACKAGES=(
 
 sudo apt-get install -y "${APT_PACKAGES[@]}"
 e_success "Core apt packages installed"
+
+# ------------------------------------------------------------------------------
+# Install/Update AWS CLI v2 (official installer)
+# ------------------------------------------------------------------------------
+
+e_header "Installing/updating AWS CLI v2..."
+curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
+unzip -q /tmp/awscliv2.zip -d /tmp
+if command_exists aws; then
+    sudo /tmp/aws/install --update
+    e_success "AWS CLI v2 updated"
+else
+    sudo /tmp/aws/install
+    e_success "AWS CLI v2 installed"
+fi
+rm -rf /tmp/awscliv2.zip /tmp/aws
 
 # ------------------------------------------------------------------------------
 # Handle bat -> batcat symlink (Ubuntu names it batcat)
@@ -230,7 +246,7 @@ fi
 
 e_header "Verifying installation..."
 
-TOOLS=(git zsh fzf bat lazygit zellij)
+TOOLS=(git zsh fzf bat aws lazygit zellij)
 for tool in "${TOOLS[@]}"; do
     if command_exists "$tool"; then
         e_success "$tool is available"
