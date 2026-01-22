@@ -32,6 +32,18 @@ setopt HIST_IGNORE_DUPS      # do not store duplicates
 setopt HIST_REDUCE_BLANKS    # remove blank lines from history
 setopt CORRECT
 
+# ------------------------------------------------------------------------------
+# History
+# ------------------------------------------------------------------------------
+
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+
+# Optional (useful with multiple concurrent shells):
+# setopt SHARE_HISTORY
+# setopt HIST_FCNTL_LOCK
+
 # case insensitive path-completion
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
