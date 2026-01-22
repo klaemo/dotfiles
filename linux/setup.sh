@@ -100,7 +100,6 @@ sudo apt-get update -qq
 APT_PACKAGES=(
     bat
     curl
-    fzf
     gh
     git
     htop
@@ -156,6 +155,19 @@ if ! command_exists lazygit; then
 else
     e_success "lazygit already installed"
 fi
+
+# ------------------------------------------------------------------------------
+# Install fzf (Ubuntu 24.04 ships an older version)
+# ------------------------------------------------------------------------------
+
+e_header "Installing/updating fzf from GitHub releases..."
+FZF_VERSION=$(curl -s "https://api.github.com/repos/junegunn/fzf/releases/latest" | grep -Po '"tag_name": "\K[^\"]*')
+FZF_VERSION=${FZF_VERSION#v}
+curl -fLo /tmp/fzf.tar.gz "https://github.com/junegunn/fzf/releases/latest/download/fzf-${FZF_VERSION}-linux_amd64.tar.gz"
+mkdir -p "${HOME}/.local/bin"
+tar xf /tmp/fzf.tar.gz -C "${HOME}/.local/bin" fzf
+rm /tmp/fzf.tar.gz
+e_success "fzf installed to ~/.local/bin"
 
 # ------------------------------------------------------------------------------
 # Install zellij (not in Ubuntu repos by default)
