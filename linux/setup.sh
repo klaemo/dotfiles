@@ -244,8 +244,12 @@ e_success "Copied zellij config"
 rsync -avz --quiet "${DOTFILES_DIR}/settings/bat/" "${HOME}/.config/bat/"
 e_success "Copied bat config"
 
+# Copy .gitconfig
+rsync -avz --quiet "${DOTFILES_DIR}/.gitconfig" "${HOME}/.gitconfig"
+e_success "Copied .gitconfig"
+
 # Link other dotfiles
-for file in .gitconfig .gitattributes .gitignore .wgetrc .inputrc; do
+for file in .gitattributes .gitignore .wgetrc .inputrc; do
     if [[ -f "${DOTFILES_DIR}/${file}" ]]; then
         ln -sf "${DOTFILES_DIR}/${file}" "${HOME}/${file}"
         e_success "Linked ~/${file}"
