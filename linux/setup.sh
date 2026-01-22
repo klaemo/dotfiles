@@ -59,36 +59,6 @@ fi
 e_success "Pre-flight checks passed (${PRETTY_NAME:-Linux})"
 
 # ------------------------------------------------------------------------------
-# Enable Ubuntu backports repository
-# ------------------------------------------------------------------------------
-
-e_header "Enabling Ubuntu backports repository..."
-
-if [[ "${ID:-}" == "ubuntu" ]]; then
-    CODENAME="${VERSION_CODENAME:-$(lsb_release -cs 2>/dev/null || echo '')}"
-    if [[ -n "${CODENAME}" ]]; then
-        BACKPORTS_SOURCE="/etc/apt/sources.list.d/ubuntu-backports.sources"
-        if ! grep -rq "${CODENAME}-backports" /etc/apt/sources.list.d/ 2>/dev/null && \
-           ! grep -q "${CODENAME}-backports" /etc/apt/sources.list 2>/dev/null; then
-            sudo tee "${BACKPORTS_SOURCE}" >/dev/null <<EOF
-Types: deb
-URIs: http://archive.ubuntu.com/ubuntu
-Suites: ${CODENAME}-backports
-Components: main restricted universe multiverse
-Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
-EOF
-            e_success "Ubuntu backports repository enabled (${CODENAME}-backports)"
-        else
-            e_success "Ubuntu backports repository already enabled"
-        fi
-    else
-        e_warning "Could not determine Ubuntu codename, skipping backports setup"
-    fi
-else
-    e_warning "Not Ubuntu, skipping backports repository setup"
-fi
-
-# ------------------------------------------------------------------------------
 # Install packages via apt
 # ------------------------------------------------------------------------------
 
@@ -113,6 +83,15 @@ APT_PACKAGES=(
 
 sudo apt-get install -y "${APT_PACKAGES[@]}"
 e_success "Core apt packages installed"
+
+# ------------------------------------------------------------------------------
+# Install cockpit from Ubuntu backports
+# ------------------------------------------------------------------------------
+
+e_header "Installing cockpit from Ubuntu backports..."
+. /etc/os-release
+sudo apt install -y -t ${VERSION_CODENAME}-backports cockpit
+e_success "cockpit installed from backports"
 
 # ------------------------------------------------------------------------------
 # Install/Update AWS CLI v2 (official installer)
