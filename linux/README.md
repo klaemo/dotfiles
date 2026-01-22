@@ -46,3 +46,15 @@ This will:
 ```bash
 bash ~/.dotfiles/linux/setup.sh
 ```
+
+### 5. Set up Tailscale + ufw (run as root)
+
+```bash
+sudo bash ~/.dotfiles/linux/setup-tailscale.sh
+```
+
+This will:
+- Install and start Tailscale
+- Prompt `tailscale up` if not already connected
+- Enable ufw and set default deny incoming
+- Allow SSH from anywhere and allow all traffic on `tailscale0`
