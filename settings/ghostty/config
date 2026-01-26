@@ -8,7 +8,7 @@ window-height = 1000
 window-width = 1000
 
 # zellij compatibility (super+shift is used as secondary leader key)
-# macos-option-as-alt = left
+macos-option-as-alt = right
 keybind = super+shift+up=unbind
 keybind = super+shift+down=unbind
 keybind = super+shift+h=unbind
