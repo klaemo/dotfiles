@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Create User Script (Debian/Ubuntu)
-# Creates a sudo user and copies root's SSH key for key-based authentication
+# Creates a user and copies root's SSH key for key-based authentication
 # Usage: Run as root: bash create-user.sh <username>
 
 # ------------------------------------------------------------------------------
@@ -47,18 +47,25 @@ if id "$USERNAME" &>/dev/null; then
 fi
 
 # ------------------------------------------------------------------------------
-# Ensure sudo is installed
+# Choose sudo access
 # ------------------------------------------------------------------------------
 
-e_header "Checking for sudo..."
+e_header "Grant sudo access to '$USERNAME'?"
+read -r -p "Add user to sudo group? [Y/n]: " GRANT_SUDO_INPUT
+GRANT_SUDO_INPUT="${GRANT_SUDO_INPUT:-Y}"
 
-if ! command -v sudo &>/dev/null; then
-    e_warning "sudo not found, installing..."
-    apt-get update -qq && apt-get install -y sudo
-    e_success "sudo installed"
-else
-    e_success "sudo is already installed"
-fi
+case "$GRANT_SUDO_INPUT" in
+    [Yy]|[Yy][Ee][Ss])
+        GRANT_SUDO="yes"
+        ;;
+    [Nn]|[Nn][Oo])
+        GRANT_SUDO="no"
+        ;;
+    *)
+        e_error "Invalid choice. Please answer y or n."
+        exit 1
+        ;;
+esac
 
 # ------------------------------------------------------------------------------
 # Create user
@@ -70,13 +77,17 @@ adduser --gecos "" "$USERNAME"
 e_success "User '$USERNAME' created"
 
 # ------------------------------------------------------------------------------
-# Add user to sudo group
+# Add user to sudo group (optional)
 # ------------------------------------------------------------------------------
 
-e_header "Adding '$USERNAME' to sudo group..."
+if [[ "$GRANT_SUDO" == "yes" ]]; then
+    e_header "Adding '$USERNAME' to sudo group..."
 
-usermod -aG sudo "$USERNAME"
-e_success "User added to sudo group"
+    usermod -aG sudo "$USERNAME"
+    e_success "User added to sudo group"
+else
+    e_success "Skipping sudo group assignment"
+fi
 
 # ------------------------------------------------------------------------------
 # Copy SSH key from root
@@ -115,7 +126,11 @@ echo "Next steps:"
 echo "  1. KEEP THIS ROOT SESSION OPEN"
 echo "  2. In a NEW terminal, test SSH login:"
 echo "     ssh $USERNAME@<server-ip>"
-echo "  3. Test sudo access:"
-echo "     sudo whoami  (should print: root)"
-echo "  4. Once confirmed working, run harden-ssh.sh to disable root login"
+if [[ "$GRANT_SUDO" == "yes" ]]; then
+    echo "  3. Test sudo access:"
+    echo "     sudo whoami  (should print: root)"
+    echo "  4. Once confirmed working, run harden-ssh.sh to disable root login"
+else
+    echo "  3. Once confirmed working, run harden-ssh.sh to disable root login"
+fi
 echo ""
