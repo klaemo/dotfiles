@@ -2,6 +2,12 @@
 
 Scripts for setting up and securing Debian/Ubuntu servers.
 
+## Repo Checkout (SSH)
+
+```bash
+git clone git@github.com:clemens/dotfiles.git ~/.dotfiles
+```
+
 ## Initial Server Setup
 
 ### 1. Create a sudo user (run as root)
