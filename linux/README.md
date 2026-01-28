@@ -5,7 +5,7 @@ Scripts for setting up and securing Debian/Ubuntu servers.
 ## Repo Checkout (SSH)
 
 ```bash
-git clone git@github.com:clemens/dotfiles.git ~/.dotfiles
+git clone git@github.com:klaemo/dotfiles.git ~/.dotfiles
 ```
 
 ## Initial Server Setup
