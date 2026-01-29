@@ -68,13 +68,28 @@ case "$GRANT_SUDO_INPUT" in
 esac
 
 # ------------------------------------------------------------------------------
+# Install zsh and set as default shell
+# ------------------------------------------------------------------------------
+
+e_header "Setting up zsh as default shell..."
+
+# Install zsh if not present
+if ! command -v zsh &>/dev/null; then
+    apt-get update -qq
+    apt-get install -y zsh
+    e_success "zsh installed"
+else
+    e_success "zsh already installed"
+fi
+
+# ------------------------------------------------------------------------------
 # Create user
 # ------------------------------------------------------------------------------
 
 e_header "Creating user '$USERNAME'..."
 
-adduser --gecos "" "$USERNAME"
-e_success "User '$USERNAME' created"
+adduser --gecos "" --shell "${ZSH_PATH}" "$USERNAME"
+e_success "User '$USERNAME' created with zsh as default shell"
 
 # ------------------------------------------------------------------------------
 # Add user to sudo group (optional)
