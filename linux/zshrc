@@ -65,6 +65,20 @@ export LESS_TERMCAP_md=$(tput setaf 136)
 export BAT_THEME="Catppuccin Frappe"
 
 # ------------------------------------------------------------------------------
+# PATH
+# ------------------------------------------------------------------------------
+
+# Keep early so ~/.local/bin tools are available for setup below.
+path=(
+    "$HOME/.local/bin"
+    "$HOME/.dotfiles/bin"
+    "/usr/local/bin"
+    ${path}
+)
+typeset -U path  # Remove duplicates
+export PATH
+
+# ------------------------------------------------------------------------------
 # fzf
 # ------------------------------------------------------------------------------
 
@@ -92,19 +106,6 @@ fi
 if command -v zellij &>/dev/null; then
     . <( zellij setup --generate-completion zsh | sed -Ee 's/^(_(zellij) ).*/compdef \1\2/' )
 fi
-
-# ------------------------------------------------------------------------------
-# PATH
-# ------------------------------------------------------------------------------
-
-path=(
-    "$HOME/.local/bin"
-    "$HOME/.dotfiles/bin"
-    "/usr/local/bin"
-    ${path}
-)
-typeset -U path  # Remove duplicates
-export PATH
 
 # ------------------------------------------------------------------------------
 # Extra config & aliases
