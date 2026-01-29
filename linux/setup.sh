@@ -110,6 +110,19 @@ fi
 rm -rf /tmp/awscliv2.zip /tmp/aws
 
 # ------------------------------------------------------------------------------
+# Install Node.js via NodeSource repository
+# ------------------------------------------------------------------------------
+
+e_header "Installing Node.js via NodeSource..."
+if ! command_exists node; then
+    curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+    e_success "Node.js installed"
+else
+    e_success "Node.js already installed ($(node --version))"
+fi
+
+# ------------------------------------------------------------------------------
 # Handle bat -> batcat symlink (Ubuntu names it batcat)
 # ------------------------------------------------------------------------------
 
@@ -246,23 +259,6 @@ if command_exists bat; then
 fi
 
 # ------------------------------------------------------------------------------
-# Install volta (Node.js version manager)
-# ------------------------------------------------------------------------------
-
-if ! command_exists volta; then
-    e_header "Installing volta..."
-    curl https://get.volta.sh | bash -s -- --skip-setup
-    e_success "volta installed"
-
-    # Generate completions
-    if [[ -x "${HOME}/.volta/bin/volta" ]]; then
-        "${HOME}/.volta/bin/volta" completions -o "${HOME}/.zsh/_volta" zsh 2>/dev/null || true
-    fi
-else
-    e_success "volta already installed"
-fi
-
-# ------------------------------------------------------------------------------
 # Install bun
 # ------------------------------------------------------------------------------
 
@@ -295,7 +291,7 @@ fi
 
 e_header "Verifying installation..."
 
-TOOLS=(git zsh fzf bat aws lazygit zellij)
+TOOLS=(git zsh fzf bat aws node lazygit zellij)
 for tool in "${TOOLS[@]}"; do
     if command_exists "$tool"; then
         e_success "$tool is available"

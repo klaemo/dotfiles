@@ -97,10 +97,7 @@ fi
 # PATH
 # ------------------------------------------------------------------------------
 
-export VOLTA_HOME="$HOME/.volta"
-
 path=(
-    "$VOLTA_HOME/bin"
     "$HOME/.local/bin"
     "$HOME/.dotfiles/bin"
     "/usr/local/bin"
