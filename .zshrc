@@ -65,11 +65,10 @@ export FZF_DEFAULT_OPTS=" \
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
-export VOLTA_HOME="$HOME/.volta";
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 path=(
-  "$VOLTA_HOME/bin"         # Highest priority
-  "$HOME/.dotfiles/bin"
+  "$HOME/.dotfiles/bin"     # Highest priority
   "/usr/local/bin"
   ${path}                   # Existing paths
 )

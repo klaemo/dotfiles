@@ -1,11 +1,6 @@
 #!/bin/bash
 
 run_node() {
-	# install volta
-	if ! type_exists 'volta'; then
-		curl https://get.volta.sh | bash
-
-		# install volta completions
-		~/.volta/bin/volta completions -o ~/.zsh/_volta zsh
-	fi
+    # make sure volta is uninstalled
+    rm -rf ~/.volta
 }
