@@ -55,9 +55,6 @@ run_brew() {
             [[ $? ]] && e_success "Done"
         fi
 
-        # Set up fnm shell completions
-        fnm completions --shell zsh > ~/.zsh/completions/_fnm
-
         e_header "Checking status of desired Homebrew casks..."
         local list_casks
         local -a missing_casks

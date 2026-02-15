@@ -142,12 +142,12 @@ fi
 
 # Install and update node packages
 if [[ $no_packages ]]; then
-    printf "Skipped node installation.\n"
+    printf "Skipped fnm installation.\n"
 else
-    printf "Setting up node...\n"
+    printf "Setting up fnm...\n"
 
     # Install Node packages
     run_node
 
-    e_success "Node setup complete!"
+    e_success "fnm setup complete!"
 fi
