@@ -281,7 +281,7 @@ rsync -avz --quiet "${DOTFILES_DIR}/settings/bat/" "${HOME}/.config/bat/"
 e_success "Copied bat config"
 
 # Copy .gitconfig
-rsync -avz --quiet "${DOTFILES_DIR}/.gitconfig" "${HOME}/.gitconfig"
+rsync -avz --quiet "${DOTFILES_DIR}/linux/.gitconfig" "${HOME}/.gitconfig"
 e_success "Copied .gitconfig"
 
 # Link other dotfiles
