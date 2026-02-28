@@ -85,6 +85,50 @@ sudo apt-get install -y "${APT_PACKAGES[@]}"
 e_success "Core apt packages installed"
 
 # ------------------------------------------------------------------------------
+# Install Docker from official apt repository (Deb822 format)
+# ------------------------------------------------------------------------------
+
+e_header "Installing Docker from official repository..."
+if ! command_exists docker; then
+    # Install prerequisites for apt repos
+    sudo apt-get install -y ca-certificates curl gnupg lsb-release
+
+    # Create keyrings directory
+    sudo install -m 0755 -d /etc/apt/keyrings
+
+    # Download Docker GPG key
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+    # Create Deb822-format sources file
+    . /etc/os-release
+    sudo tee /etc/apt/sources.list.d/docker.sources > /dev/null <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: ${VERSION_CODENAME}
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.gpg
+EOF
+
+    # Update and install Docker
+    sudo apt-get update -qq
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    e_success "Docker installed"
+else
+    e_success "Docker already installed ($(docker --version 2>/dev/null | cut -d' ' -f3 | tr -d ','))"
+fi
+
+# Add user to docker group for non-root usage
+if ! groups "$USER" | grep -q '\bdocker\b'; then
+    sudo groupadd -f docker
+    sudo usermod -aG docker "$USER"
+    e_success "Added $USER to docker group (log out/in to apply)"
+else
+    e_success "$USER already in docker group"
+fi
+
+# ------------------------------------------------------------------------------
 # Install cockpit from Ubuntu backports
 # ------------------------------------------------------------------------------
 
@@ -291,7 +335,7 @@ fi
 
 e_header "Verifying installation..."
 
-TOOLS=(git zsh fzf bat aws node lazygit zellij)
+TOOLS=(git zsh fzf bat aws node lazygit zellij docker)
 for tool in "${TOOLS[@]}"; do
     if command_exists "$tool"; then
         e_success "$tool is available"
