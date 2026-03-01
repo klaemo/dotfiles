@@ -75,13 +75,10 @@ export PATH
 # Git credentials
 # Not under version control to prevent people from
 # accidentally committing with your details
-GIT_AUTHOR_NAME="Clemens Stolle"
-GIT_AUTHOR_EMAIL="clemens@example.com"
-GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-# Set the credentials (modifies ~/.gitconfig)
-git config --global user.name "$GIT_AUTHOR_NAME"
-git config --global user.email "$GIT_AUTHOR_EMAIL"
+export GIT_AUTHOR_NAME="Clemens Stolle"
+export GIT_AUTHOR_EMAIL="clemens@example.com"
+export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 
 # Aliases
 alias code="cd ~/Code"
