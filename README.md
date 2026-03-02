@@ -58,12 +58,27 @@ Homebrew formulae:
 * [wget](http://www.gnu.org/software/wget/)
 * [httpie](https://github.com/jkbrzt/httpie)
 
+### Git credentials
+
+Git user credentials are stored in `~/.gitconfig.local`, which is included
+by `.gitconfig` via `[include] path = ~/.gitconfig.local`. This file is not
+under version control.
+
+The setup script will prompt for your name and email on first run. You can
+also edit it manually:
+
+```ini
+[user]
+    name = Clemens Stolle
+    email = clemens@example.com
+```
+
 ### Local/private zsh configuration
 
 Any private and custom zsh commands and configuration should be placed in a
 `~/.zsh_extra` file. This file will not be under version control or
 committed to a public repository. If `~/.zsh_extra` exists, it will be
-sourced for inclusion in `zsh_env`.
+sourced by `.zshrc`.
 
 Here is an example `~/.zsh_extra`:
 
@@ -72,21 +87,9 @@ Here is an example `~/.zsh_extra`:
 PATH=$PATH:~/.gem/ruby/1.8/bin
 export PATH
 
-# Git credentials
-# Not under version control to prevent people from
-# accidentally committing with your details
-export GIT_AUTHOR_NAME="Clemens Stolle"
-export GIT_AUTHOR_EMAIL="clemens@example.com"
-export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-export GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-
 # Aliases
 alias code="cd ~/Code"
 ```
-
-N.B. Because the `git/gitconfig` file is copied to `~/.gitconfig`, any private
-git configuration specified in `~/.extra` will not be committed to
-your dotfiles repository.
 
 ## Acknowledgements
 

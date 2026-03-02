@@ -32,6 +32,50 @@ command_exists() {
     command -v "$1" &>/dev/null
 }
 
+# Set up ~/.gitconfig.local with user credentials if not already configured.
+# Prompts for name and email, then writes a minimal [user] block.
+setup_gitconfig() {
+    local gitconfig_local="${HOME}/.gitconfig.local"
+
+    # Skip if already configured
+    if [[ -f "$gitconfig_local" ]] && git config -f "$gitconfig_local" user.name &>/dev/null; then
+        e_success "Git credentials already configured in ~/.gitconfig.local"
+        return
+    fi
+
+    e_header "Setting up git credentials..."
+
+    local git_name git_email
+    local default_name="${GIT_AUTHOR_NAME:-$GIT_COMMITTER_NAME}"
+    local default_email="${GIT_AUTHOR_EMAIL:-$GIT_COMMITTER_EMAIL}"
+
+    if [[ -n "$default_name" ]]; then
+        printf "Enter your git committer name [%s]: " "$default_name"
+    else
+        printf "Enter your git committer name: "
+    fi
+    read git_name
+    git_name="${git_name:-$default_name}"
+
+    if [[ -n "$default_email" ]]; then
+        printf "Enter your git committer email [%s]: " "$default_email"
+    else
+        printf "Enter your git committer email: "
+    fi
+    read git_email
+    git_email="${git_email:-$default_email}"
+
+    if [[ -z "$git_name" || -z "$git_email" ]]; then
+        e_warning "Skipping git credentials setup (name or email was empty)"
+        return
+    fi
+
+    git config -f "$gitconfig_local" user.name "$git_name"
+    git config -f "$gitconfig_local" user.email "$git_email"
+
+    e_success "Git credentials saved to ~/.gitconfig.local"
+}
+
 # ------------------------------------------------------------------------------
 # Pre-flight checks
 # ------------------------------------------------------------------------------
@@ -283,6 +327,9 @@ e_success "Copied bat config"
 # Copy .gitconfig
 rsync -avz --quiet "${DOTFILES_DIR}/linux/.gitconfig" "${HOME}/.gitconfig"
 e_success "Copied .gitconfig"
+
+# Set up git credentials (prompts only if ~/.gitconfig.local is missing)
+setup_gitconfig
 
 # Link other dotfiles
 for file in .gitattributes .gitignore .wgetrc .inputrc; do

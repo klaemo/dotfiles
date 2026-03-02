@@ -23,6 +23,7 @@ cd ${DOTFILES_DIRECTORY}
 source ./lib/help
 source ./lib/utils
 source ./lib/brew
+source ./lib/git
 source ./lib/node
 
 # Help text
@@ -135,6 +136,7 @@ if is_confirmed; then
         mkdir -p "$HOME/.zsh"
     fi
     mirrorfiles
+    setup_gitconfig
     zsh -c "source ~/.zshrc"
 else
     printf "Skipped dotfiles setup.\n"
