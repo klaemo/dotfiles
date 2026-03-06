@@ -306,9 +306,11 @@ e_header "Linking dotfiles..."
 mkdir -p "${HOME}/.zsh"
 mkdir -p "${HOME}/.config"
 
-# Symlink zshrc
+# Symlink zshrc and zshenv
 ln -sf "${LINUX_DIR}/zshrc" "${HOME}/.zshrc"
 e_success "Linked ~/.zshrc"
+ln -sf "${LINUX_DIR}/zshenv" "${HOME}/.zshenv"
+e_success "Linked ~/.zshenv"
 
 # Symlink aliases
 ln -sf "${LINUX_DIR}/aliases" "${HOME}/.aliases"
