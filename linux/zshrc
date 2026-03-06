@@ -51,32 +51,11 @@ bindkey '^[[A' up-line-or-search   # search history on up arrow
 bindkey '^[[B' down-line-or-search # search history on down arrow
 
 # ------------------------------------------------------------------------------
-# Environment
+# Environment (interactive-only)
 # ------------------------------------------------------------------------------
-
-# Prefer US English and use UTF-8
-export LANG='en_US.UTF-8'
-export LC_ALL='en_US.UTF-8'
 
 # Highlight section titles in manual pages
 export LESS_TERMCAP_md=$(tput setaf 136)
-
-# bat theme
-export BAT_THEME="Catppuccin Frappe"
-
-# ------------------------------------------------------------------------------
-# PATH
-# ------------------------------------------------------------------------------
-
-# Keep early so ~/.local/bin tools are available for setup below.
-path=(
-    "$HOME/.local/bin"
-    "$HOME/.dotfiles/bin"
-    "/usr/local/bin"
-    ${path}
-)
-typeset -U path  # Remove duplicates
-export PATH
 
 # ------------------------------------------------------------------------------
 # fzf
@@ -133,6 +112,4 @@ elif [[ -f $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; th
     source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+
