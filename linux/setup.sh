@@ -307,9 +307,9 @@ mkdir -p "${HOME}/.zsh"
 mkdir -p "${HOME}/.config"
 
 # Symlink zshrc and zshenv
-ln -sf "${LINUX_DIR}/zshrc" "${HOME}/.zshrc"
+ln -sf "${LINUX_DIR}/.zshrc" "${HOME}/.zshrc"
 e_success "Linked ~/.zshrc"
-ln -sf "${LINUX_DIR}/zshenv" "${HOME}/.zshenv"
+ln -sf "${LINUX_DIR}/.zshenv" "${HOME}/.zshenv"
 e_success "Linked ~/.zshenv"
 
 # Symlink aliases
@@ -317,9 +317,7 @@ ln -sf "${LINUX_DIR}/aliases" "${HOME}/.aliases"
 e_success "Linked ~/.aliases"
 
 # Copy zellij config (use Linux-specific layout)
-rsync -avz --quiet "${DOTFILES_DIR}/settings/zellij/" "${HOME}/.config/zellij/"
-# Overwrite the dev layout with Linux version
-cp "${LINUX_DIR}/settings/zellij/layouts/dev.kdl" "${HOME}/.config/zellij/layouts/dev.kdl"
+rsync -avz --quiet "${LINUX_DIR}/settings/zellij/" "${HOME}/.config/zellij/"
 e_success "Copied zellij config"
 
 # Copy bat config
